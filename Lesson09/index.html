@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>小马技术 | Chart.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/myweb/style/main.css" />
+    <script src="/myweb/chartjs/Chart.bundle.js"></script>
+</head>
+
+<body>
+    <canvas id="myChart">
+        图表区
+    </canvas>
+
+    <script>
+        (function () {
+            'use strict';
+
+            var type = 'bar';
+            var data = {
+                labels: [2014, 2015, 2016, 2017, 2018],
+                datasets: [
+                    {
+                        label: '优酷',
+                        data: [100, 150, 300, 800, 1600],
+                        type: 'line',
+                        fill: false,
+                        yAxisID: 'youku-axes'
+                    },
+                    {
+                        label: 'Youtube',
+                        data: [50, 100, 200, 400, 600],
+                        type: 'bar',
+                        yAxisID: 'youtube-axes'
+                    }
+                ]
+            };
+
+            var options = {
+                scales: {
+                    yAxes: [
+                        {
+                            id: 'youku-axes',
+                            type: 'linear',
+                            position: 'left',
+                            ticks: {
+                                min: 0,
+                                max: 1800
+                            }
+                        },
+                        {
+                            id: 'youtube-axes',
+                            type: 'linear',
+                            position: 'right',
+                            ticks: {
+                                min: 0,
+                                max: 800
+                            },
+                            gridLines: {
+                                display: false
+                            }
+                        }
+                    ]
+                },
+                title: {
+                    display: true,
+                    text: '小马视频',
+                    fontColor: 'green',
+                    fontSize: '24'
+                }
+            };
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: type,
+                data: data,
+                options: options
+            });
+        })();
+    </script>
+</body>
+
+</html>
