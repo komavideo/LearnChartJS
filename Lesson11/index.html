@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>小马技术 | Chart.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/myweb/style/main.css" />
+    <script src="/myweb/chartjs/Chart.bundle.js"></script>
+</head>
+
+<body>
+    <canvas id="myChart">
+        图表区
+    </canvas>
+
+    <script>
+        (function () {
+            'use strict';
+
+            var type = 'doughnut'; //pie, doughnut
+            var data = {
+                labels: ['泽拉图', '雷诺', '小鹿'],
+                datasets: [
+                    {
+                        data: [70, 40, 55],
+                        backgroundColor: ['green', 'gray', 'pink']
+                    }
+                ]
+            };
+            var options = {
+                title: {
+                    display: true,
+                    text: '风暴英雄',
+                    fontColor: 'indigo',
+                    fontSize: '24'
+                },
+                // cutoutPercentage: 20,
+            };
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: type,
+                data: data,
+                options: options
+            });
+        })();
+    </script>
+</body>
+
+</html>
